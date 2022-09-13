@@ -16,7 +16,7 @@ int main()
 	int Total_foods = Total_rooms + Total_pasta + Total_burger + Total_noodles + Total_shake + Total_chicken;
 
 	map<string, int> hotel;
-	hotel["Rooms"] = 0;
+	hotel["rooms"] = 0;
 	hotel["pasta"] = 0;
 	hotel["burger"] = 0;
 	hotel["noodles"] = 0;
@@ -24,12 +24,12 @@ int main()
 	hotel["chicken"] = 0;
 
 
-	cout << "\n Insert a number ";
+	/*cout << "\n Insert a number ";
 	cin >> hotel["Rooms"];
-	cout << hotel["Rooms"];
+	cout << hotel["Rooms"];*/
 
 	//map<string, int> ::iterator iter;
-	cout << "keys" << " & " << "values" << endl;
+	//cout << "keys" << " & " << "values" << endl;
 	//for (iter = hotel.begin(); iter != hotel.end(); iter++)
 	//{
 	//	cout << (*iter).first << "    " << (*iter).second << "\n";
@@ -37,12 +37,18 @@ int main()
 
 	for (auto it = hotel.begin(); it != hotel.end(); it++)
 	{
-		cout << it->first << "   " << it->second << endl;
+		cout << "Insert number of " << it->first << endl;
+		cin >> it->second;
 	}
 
 
+	cout << "\n Quantity of items we have: " << endl;
+	for (auto it = hotel.begin(); it != hotel.end(); it++)
+	{
+		cout << it->first << "    " << it->second << endl;
+	}
 
-	//cout << "\n Quantity of items we have: ";
+
 	//cout << "\n Rooms available: ";
 	//cin >> Qrooms;
 	//cout << "\n Quantity of pasta: ";
