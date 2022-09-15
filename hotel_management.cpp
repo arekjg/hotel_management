@@ -15,13 +15,23 @@ int main()
 	int Total_rooms = 0, Total_pasta = 0, Total_burger = 0, Total_noodles = 0, Total_shake = 0, Total_chicken = 0;
 	int Total_foods = Total_rooms + Total_pasta + Total_burger + Total_noodles + Total_shake + Total_chicken;
 
-	map<string, int> hotel;
-	hotel["rooms"] = 0;
-	hotel["pasta"] = 0;
-	hotel["burger"] = 0;
-	hotel["noodles"] = 0;
-	hotel["shake"] = 0;
-	hotel["chicken"] = 0;
+	map<string, int> quantity;
+	quantity["rooms"] = 0;
+	quantity["pasta"] = 0;
+	quantity["burger"] = 0;
+	quantity["noodles"] = 0;
+	quantity["shake"] = 0;
+	quantity["chicken"] = 0;
+
+	map<string, int> sold;
+	sold["rooms"] = 0;
+	sold["pasta"] = 0;
+	sold["burger"] = 0;
+	sold["noodles"] = 0;
+	sold["shake"] = 0;
+	sold["chicken"] = 0;
+
+
 
 
 	/*cout << "\n Insert a number ";
@@ -35,7 +45,7 @@ int main()
 	//	cout << (*iter).first << "    " << (*iter).second << "\n";
 	//}
 
-	for (auto it = hotel.begin(); it != hotel.end(); it++)
+	for (auto it = quantity.begin(); it != quantity.end(); it++)
 	{
 		cout << "Insert number of " << it->first << endl;
 		cin >> it->second;
@@ -43,7 +53,7 @@ int main()
 
 
 	cout << "\n Quantity of items we have: " << endl;
-	for (auto it = hotel.begin(); it != hotel.end(); it++)
+	for (auto it = quantity.begin(); it != quantity.end(); it++)
 	{
 		cout << it->first << "    " << it->second << endl;
 	}
@@ -62,19 +72,19 @@ int main()
 	//cout << "\n Quantity of chicken: ";
 	//cin >> Qchicken;
 
-	//menu:
-	//	cout << "\n\ Please select from the menu options: ";
-	//	cout << "\n\n1) Rooms";
-	//	cout << "\n2) Pasta";
-	//	cout << "\n3) Burger";
-	//	cout << "\n4) Noodles";
-	//	cout << "\n5) Shake";
-	//	cout << "\n6) Chicken";
-	//	cout << "\n7) Information regarding sales and collection";
-	//	cout << "\n8) Exit";
+	menu:
+		cout << "\n\ Please select from the menu options: ";
+		cout << "\n\n1) Rooms";
+		cout << "\n2) Pasta";
+		cout << "\n3) Burger";
+		cout << "\n4) Noodles";
+		cout << "\n5) Shake";
+		cout << "\n6) Chicken";
+		cout << "\n7) Information regarding sales and collection";
+		cout << "\n8) Exit";
 
-	//	cout << "\n Please enter your choice";
-	//	cin >> choice;
+		cout << "\n Please enter your choice";
+		cin >> choice;
 
 	//	switch (choice)
 	//	{
@@ -176,7 +186,7 @@ int main()
 	//		cout << "\nPlease select the numbers mentioned above";
 	//		break;
 	//	}
-	//goto menu;
+	goto menu;
 
 
 
