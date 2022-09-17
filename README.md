@@ -1,1 +1,1 @@
-Simple terminal app written in C++.
+Simple console app written in C++.
