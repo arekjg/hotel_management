@@ -4,6 +4,10 @@
 using namespace std;
 
 // Based on the tutorial from: https://www.youtube.com/watch?v=m2xt5KIEHvc
+// My changes:
+//		added an array with names of all items
+//		added 2 maps with quantities and amount of sold items
+//		used for loops to prompt some texts in terminal instead of writing everything in file
 
 int main()
 {
@@ -17,47 +21,32 @@ int main()
 	int Total_rooms = 0, Total_pasta = 0, Total_burger = 0, Total_noodles = 0, Total_shake = 0, Total_chicken = 0;
 	int Total_foods = Total_rooms + Total_pasta + Total_burger + Total_noodles + Total_shake + Total_chicken;
 
-	// TODO: store all items in an array and insert array indexes to maps below
+	// store all items in an array
 	string items[6] = { "rooms", "pasta", "burger", "noodles", "shake", "chicken" };
 
+	// map with all quantities of items
 	map<string, int> quantity;
-	quantity[items[0]] = 0;
-	quantity["pasta"] = 0;
-	quantity["burger"] = 0;
-	quantity["noodles"] = 0;
-	quantity["shake"] = 0;
-	quantity["chicken"] = 0;
-
+	for (int i = 0; i < 6; i++)
+	{
+		quantity[items[i]] = 0;
+	}
+	
+	// map with all quantities of sold items
 	map<string, int> sold;
-	sold[items[0]] = 0;
-	sold["pasta"] = 0;
-	sold["burger"] = 0;
-	sold["noodles"] = 0;
-	sold["shake"] = 0;
-	sold["chicken"] = 0;
+	for (int i = 0; i < 6; i++)
+	{
+		sold[items[i]] = 0;
+	}
 
-
-
-
-	/*cout << "\n Insert a number ";
-	cin >> hotel["Rooms"];
-	cout << hotel["Rooms"];*/
-
-	//map<string, int> ::iterator iter;
-	//cout << "keys" << " & " << "values" << endl;
-	//for (iter = hotel.begin(); iter != hotel.end(); iter++)
-	//{
-	//	cout << (*iter).first << "    " << (*iter).second << "\n";
-	//}
-
+	// iterate through quantity map and prompt user to input items quantities
 	for (auto it = quantity.begin(); it != quantity.end(); it++)
 	{
-		cout << "Insert number of " << it->first << endl;
+		cout << "Insert number of " << it->first << ": " << endl;
 		cin >> it->second;
 	}
 
-
-	cout << "\n Quantity of items we have: " << endl;
+	// iterate through quantity map and show the user quantities available
+	cout << "\nQuantity of items we have: " << endl;
 	for (auto it = quantity.begin(); it != quantity.end(); it++)
 	{
 		cout << it->first << "    " << it->second << endl;
