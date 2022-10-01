@@ -17,8 +17,11 @@ int main()
 	int Total_rooms = 0, Total_pasta = 0, Total_burger = 0, Total_noodles = 0, Total_shake = 0, Total_chicken = 0;
 	int Total_foods = Total_rooms + Total_pasta + Total_burger + Total_noodles + Total_shake + Total_chicken;
 
+	// TODO: store all items in an array and insert array indexes to maps below
+	string items[6] = { "rooms", "pasta", "burger", "noodles", "shake", "chicken" };
+
 	map<string, int> quantity;
-	quantity["rooms"] = 0;
+	quantity[items[0]] = 0;
 	quantity["pasta"] = 0;
 	quantity["burger"] = 0;
 	quantity["noodles"] = 0;
@@ -26,7 +29,7 @@ int main()
 	quantity["chicken"] = 0;
 
 	map<string, int> sold;
-	sold["rooms"] = 0;
+	sold[items[0]] = 0;
 	sold["pasta"] = 0;
 	sold["burger"] = 0;
 	sold["noodles"] = 0;
@@ -74,6 +77,11 @@ int main()
 	//cout << "\n Quantity of chicken: ";
 	//cin >> Qchicken;
 
+
+
+	// TODO: use items[] array in menu, try for loops
+
+
 	menu:
 		cout << "\n\ Please select from the menu options: ";
 		cout << "\n\n1) Rooms";
@@ -85,7 +93,7 @@ int main()
 		cout << "\n7) Information regarding sales and collection";
 		cout << "\n8) Exit";
 
-		cout << "\n Please enter your choice";
+		cout << "\n Please enter your choice: ";
 		cin >> choice;
 
 	//	switch (choice)
