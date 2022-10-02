@@ -7,6 +7,7 @@ using namespace std;
 // My changes:
 //		added an array with names of all items
 //		added 2 maps with quantities and amount of sold items
+//		used for loops to store data in variables
 //		used for loops to prompt some texts in terminal instead of writing everything in file
 
 int main()
@@ -23,34 +24,61 @@ int main()
 
 	// store all items in an array
 	string items[6] = { "rooms", "pasta", "burger", "noodles", "shake", "chicken" };
+	int quant[6] = { };
+	int sold[6] = { };
+
+	int result = 0;
+	for (int i = 0; i < 6; i++)
+	{
+		cout << items[i] << " -- " << quant[i] << endl;
+	}
 
 	// map with all quantities of items
-	map<string, int> quantity;
-	for (int i = 0; i < 6; i++)
-	{
-		quantity[items[i]] = 0;
-	}
+	//map<string, int> quantity;
+	//for (int i = 0; i < 6; i++)
+	//{
+	//	quantity[items[i]] = 0;
+	//}
 	
 	// map with all quantities of sold items
-	map<string, int> sold;
-	for (int i = 0; i < 6; i++)
-	{
-		sold[items[i]] = 0;
-	}
+	//map<string, int> sold;
+	//for (int i = 0; i < 6; i++)
+	//{
+	//	sold[items[i]] = 0;
+	//}
 
 	// iterate through quantity map and prompt user to input items quantities
-	for (auto it = quantity.begin(); it != quantity.end(); it++)
-	{
-		cout << "Insert number of " << it->first << ": " << endl;
-		cin >> it->second;
-	}
+	//for (auto it = quantity.begin(); it != quantity.end(); it++)
+	//{
+	//	cout << "Insert number of " << it->first << ": " << endl;
+	//	cin >> it->second;
+	//}
 
 	// iterate through quantity map and show the user quantities available
-	cout << "\nQuantity of items we have: " << endl;
-	for (auto it = quantity.begin(); it != quantity.end(); it++)
-	{
-		cout << it->first << "    " << it->second << endl;
-	}
+	//cout << "\nQuantity of items we have: " << endl;
+	//for (auto it = quantity.begin(); it != quantity.end(); it++)
+	//{
+	//	cout << it->first << "    " << it->second << endl;
+	//}
+
+
+
+	// CORRECTION NEEDED
+	// 
+	//for (int i = 0; i < 6; i++)
+	//{
+	//	cout << "Insert number of " << items[i] << ": " << endl;
+	//	cin >> quant[i];
+	//}
+	//
+	//cout << "\nQuantity of items we have: " << endl;
+
+	//for (int i = 0; i < 6; i++)
+	//{
+	//	cout << items[i] << ": " << quant[i] << endl;
+	//}
+
+
 
 
 	//cout << "\n Rooms available: ";
@@ -73,16 +101,20 @@ int main()
 
 	menu:
 		cout << "\n\ Please select from the menu options: ";
-		cout << "\n\n1) Rooms";
-		cout << "\n2) Pasta";
-		cout << "\n3) Burger";
-		cout << "\n4) Noodles";
-		cout << "\n5) Shake";
-		cout << "\n6) Chicken";
+		for (int i = 0; i < 6; i++)
+		{
+			cout << "\n" << i + 1 << ") " << items[i];
+		}
+		//cout << "\n\n1) Rooms";
+		//cout << "\n2) Pasta";
+		//cout << "\n3) Burger";
+		//cout << "\n4) Noodles";
+		//cout << "\n5) Shake";
+		//cout << "\n6) Chicken";
 		cout << "\n7) Information regarding sales and collection";
 		cout << "\n8) Exit";
 
-		cout << "\n Please enter your choice: ";
+		cout << "\n\n Please enter your choice: ";
 		cin >> choice;
 
 	//	switch (choice)
