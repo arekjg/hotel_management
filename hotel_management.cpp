@@ -2,24 +2,25 @@
 #include <string>
 #include <map>
 using namespace std;
+const int NUM_OF_ITEMS = 6;
 
 // Based on the tutorial from: https://www.youtube.com/watch?v=m2xt5KIEHvc
 // My changes:
-//		replaced all variables to arrays
+//		replaced all variables with arrays
 //		used for loops to store data in variables
-//		used for loops to prompt some texts in terminal instead of writing everything in file
+//		used for loops to prompt text in terminal instead of writing everything in file
+//		added sum function which calculates final price of purchased goods
+//		
 
 int sum(int prices[])
 {
-	int size = sizeof(prices);
-	int total_sum = 0;
-
-	for (int i = 0; i < (size / 4); i++)
+	// sum all items in array
+	int total = 0;
+	for (int i = 0; i < NUM_OF_ITEMS; i++)
 	{
-		total_sum += prices[i];
+		total += prices[i];
 	}
-
-	return total_sum;
+	return total;
 }
 
 int main()
@@ -35,42 +36,68 @@ int main()
 	int Total_foods = Total_rooms + Total_pasta + Total_burger + Total_noodles + Total_shake + Total_chicken;
 
 	// arrays: available items, their quantity and sold amount
-	string items[6] = { "Rooms", "Pasta", "Burger", "Noodles", "Shake", "Chicken" };
-	int quantity[6] = { };
-	int sold[6] = { };
-	int total_prices[6] = { };
+	string items[NUM_OF_ITEMS] = { "Rooms", "Pasta", "Burger", "Noodles", "Shake", "Chicken" };
+	int quantity[NUM_OF_ITEMS] = { };
+	int sold[NUM_OF_ITEMS] = { };
+	int unit_prices[NUM_OF_ITEMS] = { };
+	int total_prices[NUM_OF_ITEMS] = { };
 
 	// prompt the user to insert starting amounts of items
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < NUM_OF_ITEMS; i++)
 	{
 		cout << "Insert number of " << items[i] << ": " << endl;
 		cin >> quantity[i];
 	}
+
+	// prompt the user to insert prices of each items
+	for (int i = 0; i < NUM_OF_ITEMS; i++)
+	{
+		cout << "Insert price of one " << items[i] << ": " << endl;
+		cin >> unit_prices[i];
+	}
 	
 	// show inserted amounts
 	cout << "\nQuantity of items we have: " << endl;
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < NUM_OF_ITEMS; i++)
 	{
-		cout << items[i] << ": " << quantity[i] << endl;
+		cout << items[i] << ": " << quantity[i] << " for $" << unit_prices[i] << " each." << endl;
 	}
 
-
-	//cout << "\n\n";
-	//int total = sum(quantity);
-	//cout << total << endl;
 
 	// show menu
 	menu:
 		cout << "\nPlease select from the menu options: ";
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < NUM_OF_ITEMS; i++)
 		{
 			cout << "\n" << i + 1 << ") " << items[i];
 		}
-		cout << "\n7) Information regarding sales and collection";
-		cout << "\n8) Exit";
+		cout << "\n" << NUM_OF_ITEMS + 1 << ") Information regarding sales and collection";
+		cout << "\n" << NUM_OF_ITEMS + 2 << ") Exit";
 
 		cout << "\n\n Please enter your choice: ";
 		cin >> choice;
+
+
+		// THIS FOR LOOP NEEDS CORRECTION
+		for (int i = 0; i < NUM_OF_ITEMS; i++)
+		{
+			if (choice = i + 1)
+			{
+				cout << "\nEnter the number/amount of " << items[i] << " you want: ";
+				cin >> quant;
+				if (quantity[i] - sold[i] >= quant)
+				{
+					sold[i] = sold[i] + quant;
+					total_prices[i] = total_prices[i] + (quant * unit_prices[i]);
+					cout << "\n\nYou purchased " << quant << " " << items[i] << " for $" << quant * unit_prices[i];
+				}
+				else
+				{
+					cout << "\nOnly " << quantity[i] - sold[i] << " " << items[i] << " remaining in the hotel.";
+				}
+			}
+		}
+
 
 		
 		//switch (choice)
@@ -174,8 +201,6 @@ int main()
 		//	break;
 		//}
 	goto menu;
-
-
 
 	return 0;
 }
