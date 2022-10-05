@@ -25,17 +25,17 @@ int sum(int prices[])
 
 int main()
 {
-	int quant;
-	int choice;
+	int quant;		// desired quantity (user's input)
+	int choice;		// user's choice
 
-	// arrays: available items, their quantity and sold amount
-	string items[NUM_OF_ITEMS] = { "Rooms", "Pasta", "Burger", "Noodles", "Shake", "Chicken", "Pizza"};
+	// arrays: names of available items, quantities of items, quantities of sold items, unit prices, total prices of sold items
+	string items[NUM_OF_ITEMS] = { "Room", "Pasta", "Burger", "Noodles", "Shake", "Chicken", "Pizza"};
 	int quantity[NUM_OF_ITEMS] = { };
 	int sold[NUM_OF_ITEMS] = { };
 	int unit_prices[NUM_OF_ITEMS] = { };
 	int total_prices[NUM_OF_ITEMS] = { };
 
-	// prompt the user to insert starting amounts of items
+	// prompt the user to insert starting quantities of items
 	for (int i = 0; i < NUM_OF_ITEMS; i++)
 	{
 		cout << "Insert number of " << items[i] << ": " << endl;
@@ -49,7 +49,7 @@ int main()
 		cin >> unit_prices[i];
 	}
 	
-	// show inserted amounts
+	// show inserted quantities
 	cout << "\nQuantity of items we have: " << endl;
 	for (int i = 0; i < NUM_OF_ITEMS; i++)
 	{
@@ -63,9 +63,8 @@ int main()
 		{
 			cout << "\n" << i + 1 << ") " << items[i];
 		}
-		cout << "\n" << NUM_OF_ITEMS + 1 << ") Information regarding sales and collection";
+		cout << "\n" << NUM_OF_ITEMS + 1 << ") Details of sales and collection";
 		cout << "\n" << NUM_OF_ITEMS + 2 << ") Exit";
-
 		cout << "\n\nPlease enter your choice: ";
 		cin >> choice;
 
