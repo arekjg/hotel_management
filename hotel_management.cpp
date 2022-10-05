@@ -2,7 +2,7 @@
 #include <string>
 #include <map>
 using namespace std;
-const int NUM_OF_ITEMS = 6;
+const int NUM_OF_ITEMS = 7;
 
 // Based on the tutorial from: https://www.youtube.com/watch?v=m2xt5KIEHvc
 // My changes:
@@ -10,7 +10,7 @@ const int NUM_OF_ITEMS = 6;
 //		used for loops to store data in variables
 //		used for loops to prompt text in terminal instead of writing everything in file
 //		added sum function which calculates final price of purchased goods
-//		
+//		made the app universal, so it's possible to change freely number of items and their names without changing anything in the later code
 
 int sum(int prices[])
 {
@@ -27,16 +27,9 @@ int main()
 {
 	int quant;
 	int choice;
-	// Quantity
-	int Qrooms = 0, Qpasta = 0, Qburger = 0, Qnoodles = 0, Qshake = 0, Qchicken = 0;
-	// Food items sold
-	int Srooms = 0, Spasta = 0, Sburger = 0, Snoodles = 0, Sshake = 0, Schicken = 0;
-	// Total price of items
-	int Total_rooms = 0, Total_pasta = 0, Total_burger = 0, Total_noodles = 0, Total_shake = 0, Total_chicken = 0;
-	int Total_foods = Total_rooms + Total_pasta + Total_burger + Total_noodles + Total_shake + Total_chicken;
 
 	// arrays: available items, their quantity and sold amount
-	string items[NUM_OF_ITEMS] = { "Rooms", "Pasta", "Burger", "Noodles", "Shake", "Chicken" };
+	string items[NUM_OF_ITEMS] = { "Rooms", "Pasta", "Burger", "Noodles", "Shake", "Chicken", "Pizza"};
 	int quantity[NUM_OF_ITEMS] = { };
 	int sold[NUM_OF_ITEMS] = { };
 	int unit_prices[NUM_OF_ITEMS] = { };
@@ -63,7 +56,6 @@ int main()
 		cout << items[i] << ": " << quantity[i] << " for $" << unit_prices[i] << " each." << endl;
 	}
 
-
 	// show menu
 	menu:
 		cout << "\nPlease select from the menu options: ";
@@ -74,14 +66,35 @@ int main()
 		cout << "\n" << NUM_OF_ITEMS + 1 << ") Information regarding sales and collection";
 		cout << "\n" << NUM_OF_ITEMS + 2 << ") Exit";
 
-		cout << "\n\n Please enter your choice: ";
+		cout << "\n\nPlease enter your choice: ";
 		cin >> choice;
 
+		// details of sales and collection
+		if (choice == NUM_OF_ITEMS + 1)
+		{
+			cout << "\n.....Details of your order.....";
+			cout << "\n\nYou purchased:\n";
+			for (int i = 0; i < NUM_OF_ITEMS; i++)
+			{
+				if (sold[i] != 0)
+				{
+					cout << items[i] << ": " << sold[i] << " x $" << unit_prices[i] << " = " << total_prices[i] << "\n";
+				}
+			}
+			int total = sum(total_prices);
+			cout << "\n\nTotal price: $" << total << "\n\n";
+			goto menu;
+		}
+		// exit app
+		else if (choice == NUM_OF_ITEMS + 2)
+		{
+			exit(0);
+		}
 
-		// THIS FOR LOOP NEEDS CORRECTION
+		// iterate through menu, find user's choice, sell an item or inform about lack of chosen item
 		for (int i = 0; i < NUM_OF_ITEMS; i++)
 		{
-			if (choice = i + 1)
+			if (choice == i + 1)
 			{
 				cout << "\nEnter the number/amount of " << items[i] << " you want: ";
 				cin >> quant;
@@ -89,16 +102,26 @@ int main()
 				{
 					sold[i] = sold[i] + quant;
 					total_prices[i] = total_prices[i] + (quant * unit_prices[i]);
-					cout << "\n\nYou purchased " << quant << " " << items[i] << " for $" << quant * unit_prices[i];
+					cout << "\n\nYou purchased " << quant << " " << items[i] << " for $" << quant * unit_prices[i] << "\n\n";
 				}
 				else
 				{
-					cout << "\nOnly " << quantity[i] - sold[i] << " " << items[i] << " remaining in the hotel.";
+					cout << "\nOnly " << quantity[i] - sold[i] << " " << items[i] << " remaining in the hotel.\n\n";
 				}
 			}
 		}
 
+		//	case 7:
+//		cout << "\n\t\tDetails of sales and collection ";
+//		cout << "\n\nNumber of rooms we had: " << Qrooms;
+//		cout << "\n\nNumber of rooms we gave for rent: " << Srooms;
+//		cout << "\n\nRemaining rooms: " << Qrooms - Srooms;
+//		cout << "\n\nTotal rooms collection for the day: " << Total_rooms;
+//		cout << "\n\nTotal food colletion for the day: " << Total_foods;
 
+
+
+		// ****************
 		
 		//switch (choice)
 		//{
