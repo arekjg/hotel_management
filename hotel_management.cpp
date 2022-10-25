@@ -113,5 +113,3 @@ int main()
 
 	return 0;
 }
-
-// fix looping menu with invalid input
